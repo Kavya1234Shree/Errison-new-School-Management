@@ -14,7 +14,8 @@
     ],
     "devDependencies": {
         "bootstrap": "^4.3.1",
-        "grunt": "^1.0.4",
+        "grunt": "^1.4.1",
+        "grunt-contrib-jshint": "^3.0.0",
         "grunt-contrib-uglify": "^3.3.0",
         "grunt-sass": "^2.1.0",
         "gulp": "^3.9.1",
