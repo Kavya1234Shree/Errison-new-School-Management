@@ -1,52 +1,70 @@
 {
-    "name": "epicsson",
-    "description": "Premium admin dashboard template with responsive and high quality UI",
-    "version": "1.0.0",
-    "keywords": [
-        "css",
-        "sass",
-        "responsive",
-        "front-end",
-        "framework",
-        "admin",
-        "dashboard",
-        "admin panel"
-    ],
-    "devDependencies": {
-        "bootstrap": "^4.3.1",
-        "grunt": "^1.4.1",
-        "grunt-contrib-jshint": "^3.0.0",
-        "grunt-contrib-uglify": "^3.3.0",
-        "grunt-sass": "^2.1.0",
-        "gulp": "^3.9.1",
-        "gulp-autoprefixer": "^5.0.0",
-        "gulp-rename": "^1.3.0",
-        "gulp-rtlcss": "^1.2.0",
-        "gulp-sass": "^4.0.1",
-        "npm-run-all": "^4.1.3",
-        "terser-webpack-plugin": "^1.3.0"
-    },
-    "dependencies": {
-        "opencollective": "^1.0.3"
-    },
-    "files": [
-        "dist/",
-        "src/"
-    ],
-    "browserslist": [
-        "last 1 major version",
-        ">= 1%",
-        "Chrome >= 45",
-        "Firefox >= 38",
-        "Edge >= 12",
-        "Explorer >= 10",
-        "iOS >= 9",
-        "Safari >= 9",
-        "Android >= 4.4",
-        "Opera >= 30"
-    ],
-    "collective": {
-        "type": "puffintheme",
-        "url": "puffintheme.com"
-    }
+  "name": "epicsson",
+  "description": "Premium admin dashboard template with responsive and high quality UI",
+  "version": "1.0.0",
+  "keywords": [
+    "css",
+    "sass",
+    "responsive",
+    "front-end",
+    "framework",
+    "admin",
+    "dashboard",
+    "admin panel"
+  ],
+  "devDependencies": {
+    "bootstrap": "^4.3.1",
+    "grunt": "^1.4.1",
+    "grunt-contrib-jshint": "^3.0.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-sass": "^2.1.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-rename": "^1.3.0",
+    "gulp-rtlcss": "^1.2.0",
+    "gulp-sass": "^4.0.1",
+    "npm-run-all": "^4.1.3",
+    "terser-webpack-plugin": "^1.3.0"
+  },
+  "dependencies": {
+    "grunt-spritesmith": "^6.9.0",
+    "opencollective": "^1.0.3"
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "browserslist": [
+    "last 1 major version",
+    ">= 1%",
+    "Chrome >= 45",
+    "Firefox >= 38",
+    "Edge >= 12",
+    "Explorer >= 10",
+    "iOS >= 9",
+    "Safari >= 9",
+    "Android >= 4.4",
+    "Opera >= 30"
+  ],
+  "collective": {
+    "type": "puffintheme",
+    "url": "puffintheme.com"
+  },
+  "main": "Gruntfile.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kavya1234Shree/Errison-new-School-Management.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kavya1234Shree/Errison-new-School-Management/issues"
+  },
+  "homepage": "https://github.com/Kavya1234Shree/Errison-new-School-Management#readme"
 }

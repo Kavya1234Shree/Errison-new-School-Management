@@ -1,21 +1,33 @@
 module.exports = function(grunt) {
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+   grunt.loadNpmTasks('grunt-spritesmith');
     grunt.initConfig({
+        jshint: {
+            all: ['Gruntfile.js']
+        },
+        sprite:{
+            all: {
+              src: 'path/to/your/sprites/*.png',
+              dest: 'destination/of/spritesheet.png',
+              destCss: 'destination/of/sprites.css'
+            }
+          },
 		sass: {			
             dist: {
 				options: {
 					outputStyle: 'compressed'
 				},
                 files: [{
-                    'assets/css/style.min.css':              'assets/scss/main.scss', 	                        /* 'All main SCSS' */
+                    'assets/css/style.min.css':              'assets/scss/main.scss', 	                        
 				}]
             }
         },  
         uglify: {
             my_target: {
               files: {
-                    'assets/bundles/lib.vendor.bundle.js':   ['assets/plugins/jquery/jquery-3.4.1.min.js','assets/plugins/bootstrap/js/bootstrap.bundle.min.js','assets/plugins/metisMenu/metisMenu.js','assets/plugins/sparkline/sparkline.js','assets/js/vendors/circle-progress.min.js','assets/plugins/listjs/list.js'], /* main js*/
+                    'assets/bundles/lib.vendor.bundle.js':   ['assets/plugins/jquery/jquery-3.4.1.min.js','assets/plugins/bootstrap/js/bootstrap.bundle.min.js','assets/plugins/metisMenu/metisMenu.js','assets/plugins/sparkline/sparkline.js','assets/js/vendors/circle-progress.min.js','assets/plugins/listjs/list.js'], 
                     
-                    /* 'assets/bundles/mainscripts.bundle.js':  ['assets/js/core.js'], /*coman js*/
+                  
 
                     'assets/bundles/counterup.bundle.js':    ['assets/plugins/counterjs/jquery.waypoints.js', 'assets/plugins/counterjs/jquery.counterup.min.js'],
 
@@ -44,7 +56,7 @@ module.exports = function(grunt) {
                         'assets/plugins/datatable/buttons/buttons.bootstrap4.min.js',
                         'assets/plugins/datatable/buttons/buttons.colVis.min.js',
                         'assets/plugins/datatable/buttons/buttons.html5.min.js',
-                        'assets/plugins/datatable/buttons/buttons.print.min.js'], /*chartist js*/
+                        'assets/plugins/datatable/buttons/buttons.print.min.js'], 
                   }
               }
           }                      
@@ -53,5 +65,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     
     grunt.registerTask("buildcss", ["sass"]);
-    grunt.registerTask("buildjs", ["uglify"]);
+    grunt.registerTask('default', ["uglify"]);
+
+    
 };
