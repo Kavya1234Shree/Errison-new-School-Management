@@ -16,6 +16,7 @@
 
 <!-- Core css -->
 <link rel="stylesheet" href="../assets/css/style.min.css"/>
+<Script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></Script>
 </head>
 
 <body class="font-muli theme-cyan gradient">
@@ -1402,8 +1403,34 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="tab-pane" id="Student-add">
                         <div class="row clearfix">
+                            <div class="container mt-5">
+                                <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-4">
+                                        <span class="border" style="padding:10px;">
+                                        <label for="input" class="custom-file-upload">
+                                            <img src="..\assets\images\cloud-computing.png" alt="cloud computing" class="upimage"  width="40px" height="40px"></i> Bulk Upload
+                                        </label>
+                                        <input hidden id="input" type="file" accept=".xls,.xlsx"/>
+                                        
+                                    </span>
+                                    <span class="ml-3" id="file-chosen">No file chosen</span>
+                                    </div>
+                                   <div class="col-md-4">
+                                   
+                                        <button class="btn btn-info" id="button" (click)="fileInput.click()">Submit</button>
+                                                                     
+                                     </div>
+                                    
+                                   
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                          
                             <div class="col-lg-8 col-md-12 col-sm-12">
                                 <div class="card">
                                     <div class="card-header">
@@ -1413,95 +1440,155 @@
                                             <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
                                         </div>
                                     </div>
-                                    <form class="card-body">
+                                    <form id="form" class="card-body" method="post">
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">First Name <span class="text-danger">*</span></label>
+                                            <label class="col-md-3 col-form-label">Registration Number<span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" placeholder="Enter First name">
+                                                <input type="text" id="regno" class="form-control" placeholder="Enter Registration Number">
+                                            </div>
+                                        </div>
+
+
+
+                                        <!-- <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Name<span class="text-danger">*</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" id="name" class="form-control" placeholder="Enter Registration Number">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Last Name <span class="text-danger">*</span></label>
+                                            <label class="col-md-3 col-form-label">Body<span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" placeholder="Enter Last name">
+                                                <input type="text" id="body" class="form-control" placeholder="Enter Registration Number">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Roll No <span class="text-danger">*</span></label>
+                                            <label class="col-md-3 col-form-label">ID<span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control">
+                                                <input type="number" id="id" class="form-control" placeholder="Enter Registration Number">
+                                            </div>
+                                        </div> -->
+
+
+
+                                        <div class="form-group row">
+                                            <label class="col-md-2 col-form-label">First Name <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="firstname" class="form-control" placeholder="Enter First name">
+                                            </div>
+
+                                            <label class="col-md-2 col-form-label">Last Name <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="lastname" class="form-control" placeholder="Enter Last name">
                                             </div>
                                         </div>
+                                       
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Email</label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control">
+                                            <label class="col-md-2 col-form-label">Roll No <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="rollno" class="form-control" placeholder="Enter Roll no.">
+                                            </div>
+                                            <label class="col-md-2 col-form-label">Email</label>
+                                            <div class="col-md-4">
+                                                <input type="email" id="email" class="form-control" placeholder="Enter email">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Registration Date <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="">
+                                                <input id="regdate" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Registration date">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Class <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <select class="form-control input-height" name="department">
+                                            <label class="col-md-2 col-form-label">Class <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <select id="classs" class="form-control input-height" name="classs">
                                                     <option value="">Select...</option>
-                                                    <option value="Category 1">Computer</option>
-                                                    <option value="Category 2">Mechanical</option>
-                                                    <option value="Category 3">Mathematics</option>
-                                                    <option value="Category 3">Commerce</option>
+                                                    <option value="Category 1">First</option>
+                                                    <option value="Category 2">Second</option>
+                                                    <option value="Category 3">Third</option>
+                                                    <option value="Category 3">Fourth</option>
+                                                </select>
+                                            </div>
+                                            <label class="col-md-2 col-form-label">Section <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <select id="section" class="form-control input-height" name="section">
+                                                    <option value="">Select...</option>
+                                                    <option value="Category 1">1st A</option>
+                                                    <option value="Category 2">1st B</option>
+                                                    <option value="Category 3">1st C</option>
+                                                    <option value="Category 3">1st D</option>
                                                 </select>
                                             </div>
                                         </div>
+                                       
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Gender <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <select class="form-control input-height" name="gender">
+                                            <label class="col-md-2 col-form-label">Gender <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <select id="gender" class="form-control input-height" name="gender">
                                                     <option value="">Select...</option>
                                                     <option value="Category 1">Male</option>
                                                     <option value="Category 2">Female</option>
                                                 </select>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Mobile No. <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control">
+                                            <label class="col-md-2 col-form-label">Date Of Birth  <span class="text-danger"></span></label>
+                                            <div class="col-md-4">
+                                                <input id="dob" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Enter DOB">
                                             </div>
                                         </div>
+                                       
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Parents Name <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control">
+                                            <label class="col-md-2 col-form-label">Mobile No. <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="mobile" class="form-control" placeholder="Enter Mobile Number">
+                                            </div>
+                                            <label class="col-md-2 col-form-label">Parents Mobile No. <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="parentsno" class="form-control" placeholder="Enter Parents Number">
                                             </div>
                                         </div>
+                                      
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Parents Mobile No. <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control">
+                                            <label class="col-md-2 col-form-label">Father's Name <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="fathername" class="form-control" placeholder="Enter Fathers Name">
+                                            </div>
+                                            <label class="col-md-2 col-form-label">Mother's Name <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <input type="text" id="mothername" class="form-control" placeholder="Enter Mothers Name">
                                             </div>
                                         </div>
+                                   
+                                       
                                         <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Date Of Birth  <span class="text-danger">*</span></label>
-                                            <div class="col-md-9">
-                                                <input type="text" class="form-control">
+                                            <label class="col-md-2 col-form-label">Father's DOB <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <input id="fatherdob" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Enter Fathers DOB">
+                                            </div>
+
+                                            <label class="col-md-2 col-form-label">Mother's DOB <span class="text-danger">*</span></label>
+                                            <div class="col-md-4">
+                                                <input id="motherdob" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Enter Mothers DOB">
                                             </div>
                                         </div>
+                                      
+                                        <div class="form-group row">
+                                            <label class="col-md-3 col-form-label">Parents Anniversary Date <span class="text-danger">*</span></label>
+                                            <div class="col-md-9">
+                                                <input id="anniversary" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Enter Anniversary Date">
+                                            </div>
+                                        </div>
+                                       
                                         <div class="form-group row">
                                             <label class="col-md-3 col-form-label">Address <span class="text-danger">*</span></label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control">
+                                                <input type="text" id="address" class="form-control" placeholder="Enter Addres Here...">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-3 col-form-label">Profile Picture</label>
-                                            <div class="col-md-9">
-                                                <input type="file" class="dropify">
-                                                <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-                                            </div>
+      
+                                        <div class="col-md-6">
+                                            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                                            <button type="submit" class="btn btn-outline-secondary">Cancel</button>
                                         </div>
                                     </form>
                                 </div>
@@ -1617,5 +1704,123 @@
 <script src="assets/js/form/dropify.js"></script>
 <script src="assets/js/page/summernote.js"></script>
 <script src="assets/js/page/dialogs.js"></script>
+<script>
+// fetch('https://jsonplaceholder.typicode.com/users')
+//   .then(response => response.json())
+//   .then(json => console.log(json))
+const userAction = async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  const myJson = await response.json(); //extract JSON from the http response
+  return myJson;// do something with myJson
+}
+userAction
+().then(response=>{
+    console.log(response)
+})
+
+// const actualBtn = document.getElementById('input');
+
+// const fileChosen = document.getElementById('file-chosen');
+
+// actualBtn.addEventListener('change', function(){
+//   fileChosen.textContent = this.files[0].name
+// })
+// let selectedFile;
+// document.getElementById('input'),addEventListener("change",(event)=>{
+//     selectedFile = event.target.files[0];
+// })
+  
+// document.getElementById('button'),addEventListener("click",()=>{
+//    if(selectedFile){
+//        let fileReader = new FileReader();
+//        fileReader.readAsBinaryString(selectedFile);
+//        fileReader.onload=(event)=>{
+//            let data =event.target.result;
+//            let workbook = XLSX.read(data,{type:"binary"});
+//            console.log(workbook);
+//            workbook.SheetNames.forEach(sheet=>{
+//                let rowObject =XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheet]);
+//                console.log(rowObject)
+//            })
+//        }
+
+//    }
+// });
+
+
+var form = document.getElementById('form')
+
+form.addEventListener('submit', function(e){
+    //auto submission of the form
+    e.preventDefault()
+
+    var name = document.getElementById('name').value
+    var body = document.getElementById('body').value
+    var id = document.getElementById('id').value
+    // var regno = document.getElementById('regno')
+    // var firstname = document.getElementById('firstname')
+    // var lastname = document.getElementById('lastname')
+    // var rollno = document.getElementById('rollno')
+    // var email = document.getElementById('email')
+    // var regdate = document.getElementById('regdate')
+    // var classs = document.getElementById('classs')
+    // var section = document.getElementById('section')
+    // var gender = document.getElementById('gender')
+    // var dob = document.getElementById('dob')
+    // var mobile = document.getElementById('mobile')
+    // var parentsno = document.getElementById('parentsno')
+    // var fathername = document.getElementById('fathername')
+    // var mothername = document.getElementById('mothername')
+    // var fatherdob = document.getElementById('fatherdob')
+    // var motherdob = document.getElementById('motherdob')
+    // var anniversary = document.getElementById('anniversary')
+    // var address = document.getElementById('address')
+    
+
+    //fetch post request
+    fetch('https://jsonplaceholder.typicode.com/posts',{
+        method :"POST",
+        body:JSON.stringify({
+            title :name,
+            body: body,
+            userId: id
+           
+        //  regno    :regno,
+        //  firstname : firstname,
+        //  lastname  : lastname,
+        //  rollno   : rollno,
+        //  email     :  email ,
+        // regdate    :  regdate,
+        // classs     : classs,
+        // section    :  section ,
+        // gender     : gender ,
+        // dob       : dob,
+        // mobile    :  mobile ,
+        // parentsno  : parentsno, 
+        // fathername : fathername,
+        // mothername  :  mothername,
+        // fatherdob  : fatherdob,
+        // motherdob  : motherdob,
+        // anniversary : anniversary,
+        // address     : address
+
+        }),
+        headers:{
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+        
+    })
+    .then(function(response){
+        return response.json()
+    })
+    .then(function(data){
+    console.log(data);
+    })
+
+
+})
+</script>
+
 </body>
+
 </html>
